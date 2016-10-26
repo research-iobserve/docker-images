@@ -8,9 +8,9 @@ RUN         apt-get update && \
             apt-get install -y curl unzip zip inotify-tools && \
             rm -rf /var/lib/apt/lists/*
 
-RUN         curl -L -o /tmp/glassfish-4.1.zip http://download.java.net/glassfish/4.1/release/glassfish-4.1.zip && \
-            unzip /tmp/glassfish-4.1.zip -d /usr/local && \
-            rm -f /tmp/glassfish-4.1.zip
+RUN         curl -L -o /tmp/glassfish-4.1.1.zip http://download.java.net/glassfish/4.1.1/release/glassfish-4.1.1.zip && \
+            unzip /tmp/glassfish-4.1.1.zip -d /usr/local && \
+            rm -f /tmp/glassfish-4.1.1.zip
 
 RUN         echo "AS_ADMIN_PASSWORD=admin" > /tmp/pwfile && asadmin create-domain --user admin --passwordfile /tmp/pwfile cocome
 RUN         asadmin start-domain cocome && \
