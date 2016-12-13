@@ -20,11 +20,6 @@ RUN         asadmin start-domain cocome && \
 COPY        kieker.monitoring.properties $GLASSFISH_HOME/glassfish/domains/cocome/config/
 COPY        postgresql-9.4.1209.jar $GLASSFISH_HOME/glassfish/domains/cocome/lib/
 
-RUN         echo "deb http://httpredir.debian.org/debian jessie contrib" >> /etc/apt/sources.list && \
-            apt-get update && \
-            apt-get install -y rpcbind nfs-common && \
-            test -d /data || mkdir /data
-
 EXPOSE      8080 4848 8181
 
 WORKDIR     /usr/local/glassfish4
