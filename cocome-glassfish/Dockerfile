@@ -17,15 +17,15 @@ RUN         asadmin start-domain cocome && \
             asadmin create-jvm-options --user admin --passwordfile /tmp/pwfile '-Dkieker.monitoring.configuration=${com.sun.aas.instanceRoot}/config/kieker.monitoring.properties' && \
             asadmin --host localhost --port 4848 --user admin --passwordfile /tmp/pwfile enable-secure-admin && \
             asadmin stop-domain cocome
-COPY        kieker.monitoring.properties $GLASSFISH_HOME/glassfish/domains/cocome/config/
+COPY        temp.kieker.monitoring.properties $GLASSFISH_HOME/glassfish/domains/cocome/config/
 COPY        postgresql-9.4.1209.jar $GLASSFISH_HOME/glassfish/domains/cocome/lib/
+COPY        start-glassfish.sh /bin/
+RUN         chmod 555 /bin/start-glassfish.sh
 
 EXPOSE      8080 4848 8181
 
 WORKDIR     /usr/local/glassfish4
 
-ADD 
-
 # verbose causes the process to remain in the foreground so that docker can track it
-ENTRYPOINT 
-
+ENTRYPOINT ["/bin/start-glassfish.sh"]
+CMD
