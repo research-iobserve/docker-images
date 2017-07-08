@@ -19,6 +19,7 @@ RUN         asadmin start-domain cocome && \
             asadmin stop-domain cocome
 COPY        temp.kieker.monitoring.properties $GLASSFISH_HOME/glassfish/domains/cocome/config/
 COPY        postgresql-9.4.1209.jar $GLASSFISH_HOME/glassfish/domains/cocome/lib/
+
 COPY        start-glassfish.sh /bin/
 RUN         chmod 555 /bin/start-glassfish.sh
 
